@@ -325,10 +325,10 @@ app.get("/media", (req, res) => {
         productora.nombre AS productora,
         tipo.nombre AS tipo
     FROM media
-    JOIN genero ON media.genero_id = genero.id
-    JOIN director ON media.director_id = director.id
-    JOIN productora ON media.productora_id = productora.id
-    JOIN tipo ON media.tipo_id = tipo.id
+    LEFT JOIN genero ON media.genero_id = genero.id
+    LEFT JOIN director ON media.director_id = director.id
+    LEFT JOIN productora ON media.productora_id = productora.id
+    LEFT JOIN tipo ON media.tipo_id = tipo.id
     `;
 
     db.query(query, (err, result) => {
