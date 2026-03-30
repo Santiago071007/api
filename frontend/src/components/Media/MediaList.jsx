@@ -11,25 +11,44 @@ export default function MediaList() {
   }, []);
 
   const fetchMedia = async () => {
-    const res = await getMedia();
-    setMediaList(res.data);
+    try {
+      const res = await getMedia();
+      setMediaList(res.data);
+    } catch (err) {
+      console.error('Error al obtener media:', err);
+    }
   };
 
   const handleDelete = async (id) => {
-    await deleteMedia(id);
-    fetchMedia();
+    try {
+      await deleteMedia(id);
+      fetchMedia();
+    } catch (err) {
+      console.error('Error al eliminar media:', err);
+    }
   };
 
   return (
     <div>
       <h2>Media</h2>
-      <MediaForm editMedia={editMedia} fetchMedia={fetchMedia} />
+
+      <MediaForm 
+        editMedia={editMedia} 
+        fetchMedia={fetchMedia} 
+      />
+
       <ul>
         {mediaList.map((m) => (
           <li key={m.id}>
             <strong>{m.titulo}</strong> ({m.anio_estreno}) - {m.genero}, {m.director}, {m.productora}, {m.tipo}
-            <button onClick={() => setEditMedia(m)}>Editar</button>
-            <button onClick={() => handleDelete(m.id)}>Eliminar</button>
+
+            <button onClick={() => setEditMedia(m)}>
+              Editar
+            </button>
+
+            <button onClick={() => handleDelete(m.id)}>
+              Eliminar
+            </button>
           </li>
         ))}
       </ul>

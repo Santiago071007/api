@@ -15,18 +15,19 @@ export default function GenreForm({ editGenre, onSave }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let genreData;
+
     if (editGenre) {
-      const res = await updateGenre(editGenre.id, { nombre, descripcion });
+      await updateGenre(editGenre.id, { nombre, descripcion });
       genreData = { ...editGenre, nombre, descripcion };
     } else {
       const res = await createGenre({ nombre, descripcion });
       genreData = { id: res.data.id, nombre, descripcion };
     }
 
-    // Actualizamos la lista inmediatamente
+
     onSave(genreData);
 
-    // Limpiamos el formulario
+    
     setNombre('');
     setDescripcion('');
   };
