@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import GenreList from './components/Genre/GenreList';
 import DirectorList from './components/Director/DirectorList';
@@ -8,7 +7,7 @@ import MediaList from './components/Media/MediaList';
 import './App.css';
 
 // URL del backend en producción
-const API_URL = "https://tu-backend.onrender.com";
+const API_URL = 'https://tu-backend.up.railway.app';
 
 function App() {
   return (
@@ -27,6 +26,7 @@ function App() {
 
         <main>
           <Routes>
+            <Route path="/" element={<h2>Bienvenido</h2>} />
             <Route path="/genres" element={<GenreList apiUrl={API_URL} />} />
             <Route path="/directors" element={<DirectorList apiUrl={API_URL} />} />
             <Route path="/productoras" element={<ProductoraList apiUrl={API_URL} />} />

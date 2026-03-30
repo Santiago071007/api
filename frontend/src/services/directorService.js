@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/directores';
+const API_URL = 'https://tu-backend.up.railway.app';
 
 export const getDirectors = () => axios.get(API_URL);
 export const createDirector = (data) => axios.post(API_URL, data);

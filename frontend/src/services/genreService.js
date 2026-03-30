@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/generos';
+const API_URL = 'https://tu-backend.up.railway.app';
 
 export const getGenres = () => axios.get(API_URL);
 export const createGenre = (data) => axios.post(API_URL, data);
